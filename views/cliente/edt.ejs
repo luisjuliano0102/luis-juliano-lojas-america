@@ -1,0 +1,21 @@
+<%- include('../cabecalho.ejs') %>
+<form method="post" enctype="multipart/form-data">
+    <br><br>
+    ID<br>
+    <input type="text" name="id" readonly value="<%=Cliente._id%>">
+    <br><br>  
+    Nome<br> 
+    <input type="text" name="nome" placeholder="Digite seu nome.">
+    <br><br>
+    CPF<br>
+    <input type="text" name="cpf" placeholder="Digite seu CPF.">
+    <br><br>
+    RG<br>
+    <input type="text" name="rg" placeholder="Digite seu RG.">
+    <br><br>
+    Foto<br>
+    <input type="file" name="foto">
+    <br><br>
+    <input type="submit" value="Adicionar">
+</form>
+<%- include('../rodape.ejs') %>

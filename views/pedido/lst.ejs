@@ -1,0 +1,38 @@
+<%- include('../cabecalho.ejs') %>
+<br>
+<br>
+<table class="table table-dark table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Nome Cliente</th>
+        <th>Nome da Loja</th>
+        <th>Código do produto</th>
+        <th>Foto do produto</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+    </tr>
+    <% Pedidos.forEach(function(pedido){ %>
+        <tr>
+            <td><%=pedido._id %></td>
+            <td><%=pedido.data %></td>
+            <td><%=pedido.valor %></td>
+            <td><%=pedido.nomeCli.nome%></td>
+            <td><%=pedido.nomeloja %></td>
+            <td><%=pedido.codigoP.codigo%></td>
+
+            <td>
+                <img style="max-width: 60px;" src="/fotos/<%=pedido.foto %>" alt="Foto do produto">
+            </td>
+            <td>
+                <a href="/admin/pedido/edt/<%=pedido._id %>">Editar</a>
+            </td>
+            
+            <td>
+                <a href="/admin/pedido/del/<%=pedido._id %>">Excluir</a>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+<%- include('../rodape.ejs') %>

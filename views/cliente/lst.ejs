@@ -1,0 +1,33 @@
+<%- include('../cabecalho.ejs') %>
+<form method="post">
+</form>
+<br>
+<table class="table table-dark table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>RG</th>
+        <th>Foto</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+    </tr>
+    <% Clientes.forEach(function(cliente){ %>
+        <tr>
+            <td><%=cliente._id %></td>
+            <td><%=cliente.nome %></td>
+            <td><%=cliente.cpf %></td>
+            <td><%=cliente.rg %></td>
+            <td>
+                <img style="max-width: 60px;" src="/fotos/<%=cliente.foto %>" alt="Foto do Cliente">
+            </td>
+            <td>
+                <a href="/admin/cliente/edt/<%=cliente._id %>">Editar</a>
+            </td>
+            <td>
+                <a href="/admin/cliente/del/<%=cliente._id %>">Excluir</a>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+<%- include('../rodape.ejs') %>

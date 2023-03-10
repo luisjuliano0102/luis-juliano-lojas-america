@@ -1,0 +1,35 @@
+<%- include('../cabecalho.ejs') %>
+<form method="post" enctype="multipart/form-data">
+    <br><br>
+    ID<br>
+    <input type="text" name="id" readonly value="<%=Pedido._id%>">
+    <br><br>
+    Data<br> 
+    <input class="form-control" type="date" name="titulo" placeholder="Data">
+    <br><br>
+    Valor<br>
+    <input class="form-control" type ="number" name="valor" placeholder="Digite o valor"></input>
+    <br><br>
+    Nome do cliente<br> 
+    <select class="form-select" name="nomeCli" aria-label="Selecione o Cliente">
+        <% Clientes.forEach(function(cliente) { %>
+            <option value="<%= cliente._id %>"><%= cliente.nome %></option>
+        <% }); %>
+    </select>
+    <br><br>
+    Nome da Loja<br> 
+    <input class="form-control"  type="text" name="nomeloja" placeholder="Digite o nome da loja"></input>
+    <br><br>
+    Código do produto<br> 
+    <select class="form-select" name="codigoP" aria-label="Selecione o codigo">
+        <% Produtos.forEach(function(produto) { %>
+            <option value="<%= produto._id %>"><%= produto.codigo %></option>
+        <% }); %>
+    </select>
+    <br><br>
+    Foto do Produto<br>
+    <input type="file" name="foto">
+    <br><br>
+    <input type="submit" value="Adicionar">
+</form>
+<%- include('../rodape.ejs') %>

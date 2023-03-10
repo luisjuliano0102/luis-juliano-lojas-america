@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>Página pública</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Favicons -->
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(224, 31, 31, 0.1);
+            border: solid ;
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em;
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../cabecalho.ejs') %>
+    <div class="container">
+        <header class="blog-header lh-1 py-3 bg-dark rounded" style="color:white;">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col text-center">
+                    <h1>Pedidos</h1>
+                </div>             
+            </div>
+        </header>        
+    </div>
+    
+        <main class="container">
+    <div class="row g-5">
+        <div class="col-md-8">
+            <h1 class="pb-4 mb-4 fst-italic border-bottom">
+            </h1>
+
+        <% Pedidos.forEach(function(pedido){ %>
+            <article class="blog-post">
+                <p>Data da compra: <%=moment(pedido.data).format('DD/MM/YYYY') %></p>
+                <p>Valor do produto: R$ <%=pedido.valor%></p>
+                <p>Cliente: <a href="/admin/cliente/lst"><%=pedido.nomeCli.nome %></a></p>
+                <p>Nome da loja: <%=pedido.nomeloja %></p>
+                <p>Código do produto: <%=pedido.codigoP.codigo %></p>
+                <div class="text-center">
+                    <img style = 'max-width: 80%; max-height: 300px;' src="/fotos/<%=pedido.foto %>" class="rounded" alt="Foto do Produto">
+                </div>
+                <hr>
+            </article>
+                <% }) %>
+    </div>
+
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4 mb-3 bg-light rounded">
+                        <ol class="list-unstyled">
+                        <li><a href="/admin/cliente/add">Adicionar cliente</a></li>
+                        <li><a href="/admin/pedido/add">Adicionar pedido</a></li>
+                        <li><a href="/admin/produto/add">Adicionar produto</a></li>
+                    </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <footer class="blog-footer text-center">
+        <p>
+            <a href="#">Voltar para cima</a> </p>
+        <p>
+            <img src="https://www.tadah.com.br/static/version1677242400/frontend/Tadah/mobile/pt_BR/images/loader-2.gif"> 
+        </p>
+    </footer>
+</main>
+<%- include('../rodape.ejs') %>
+</body>
+</html>
